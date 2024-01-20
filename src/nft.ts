@@ -2,19 +2,20 @@ import { Connection, Keypair} from "@solana/web3.js";
 import { Metaplex, keypairIdentity, toBigNumber, AccountNotFoundError, PublicKey} from "@metaplex-foundation/js";
 import * as bs58 from 'bs58';
 
-// Create keypair and metaplex instance with connection
-const uint8ArrayPrivateKey = bs58.decode("FbKeLFit6BppwfaGdRXoMTZaDiqnuhtqBQNVd6Thf6qGiMUMHxoEhiB9jQkqHjTAcjaBhnm9FJTEgGL3TNVigiB");
-const WALLET = Keypair.fromSecretKey(uint8ArrayPrivateKey);
-const METAPLEX = Metaplex.make(new Connection('https://api.devnet.solana.com'))
-
 // Function for minting the NFT 
 export async function mintNft(
   metadataUri: string,
   name: string,
   symbol: string,
   to: string,
+  blockchain_endpoint: string,
+  private_key: string
 ): Promise<string | unknown> {
   try {
+    // Create keypair and metaplex instance with connection
+    const uint8ArrayPrivateKey = bs58.decode(private_key);
+    const WALLET = Keypair.fromSecretKey(uint8ArrayPrivateKey);
+    const METAPLEX = Metaplex.make(new Connection(blockchain_endpoint))
     // With metaplex use my keypair
     const metaplex = METAPLEX.use(keypairIdentity(WALLET));
     // Create the NFT
