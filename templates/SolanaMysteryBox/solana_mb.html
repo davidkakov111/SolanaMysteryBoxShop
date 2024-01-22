@@ -1,0 +1,117 @@
+{%extends 'CoreMysteryBox/base.html'%}
+{%block title%}Solana Mystery Boxes{%endblock title%}
+{%block styleBODY%}
+overflow-y: hidden;
+{%endblock styleBODY%};
+{%block head%}
+{% comment %} Loading css file and static. {% endcomment %}
+{%load static%}
+<link rel="stylesheet" type="text/css" href="{% static 'SolanaMysteryBox/solana_mb.css' %}">
+{%endblock head%}
+{%block content%}
+{% comment %} Mystery Boxes {% endcomment %}
+{% comment %} Div to make overflow the mystery boxes horizontally. {% endcomment %}
+<div class="MBBox1">
+    {% comment %} Inside div for the mystery boxes. {% endcomment %}
+    <div class="MBBox2">
+        {% comment %} Common mystery box. {% endcomment %}
+        <div class="MysteryBox" id="MysteryBox1">
+            {% comment %} Anchor tag to be clickable the mystery box. {% endcomment %}
+            <a href="{% url 'SolanaMB_generate_qr' common_box_label common_price%}">
+                {% comment %} Common mystery box video {% endcomment %}
+                <video class="MBvid" src="{% static 'SolanaMysteryBox/commonSMB.mp4'%}" loop 
+                    id="common_box_video" poster="{%static 'SolanaMysteryBox/commonSMB.jpg'%}"></video>
+                {% comment %} Mystery box details. {% endcomment %}
+                <div class="MBText">
+                    {% comment %} Upper row. {% endcomment %}
+                    <div class="row row1">
+                        <p class="left">{{common_box_label}}</p>
+                        {% comment %} Price in SOL. {% endcomment %}
+                        <p class="right">{{common_price}} SOL</p>
+                    </div>
+                    {% comment %} Lower row. {% endcomment %}
+                    <div class="row row2">
+                        <p class="left">Win {{common_max_reward}} Sol</p>
+                        {% comment %} Price in $. {% endcomment %}
+                        <p class="right">${{dollar_common_price}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% comment %} Epic mystery box. {% endcomment %}
+        <div class="MysteryBox" id="MysteryBox2">
+            {% comment %} Anchor tag to be clickable the mystery box. {% endcomment %}
+            <a href="{% url 'SolanaMB_generate_qr' epic_box_label epic_price%}">
+                {% comment %} Epic mystery box video {% endcomment %}
+                <video class="MBvid" src="{% static 'SolanaMysteryBox/epicSMB.mp4'%}" loop 
+                    id="epic_box_video" poster="{%static 'SolanaMysteryBox/epicSMB.jpg'%}"></video>
+                {% comment %} Mystery box details. {% endcomment %}
+                <div class="MBText">
+                    {% comment %} Upper row. {% endcomment %}
+                    <div class="row row1">
+                        <p class="left">{{epic_box_label}}</p>
+                        {% comment %} Price in SOL. {% endcomment %}
+                        <p class="right">{{epic_price}} SOL</p>
+                    </div>
+                    {% comment %} Lower row. {% endcomment %}
+                    <div class="row row2">
+                        <p class="left">Win {{epic_max_reward}} Sol</p>
+                        {% comment %} Price in $. {% endcomment %}
+                        <p class="right">${{dollar_epic_price}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% comment %} Legendary mystery box. {% endcomment %}
+        <div class="MysteryBox" id="MysteryBox3">
+            {% comment %} Anchor tag to be clickable the mystery box. {% endcomment %}
+            <a href="{% url 'SolanaMB_generate_qr' legendary_box_label legendary_price%}">
+                {% comment %} Legendary mystery box video {% endcomment %}
+                <video class="MBvid" src="{% static 'SolanaMysteryBox/legendarySMB.mp4'%}" loop 
+                    id="legendary_box_video" poster="{%static 'SolanaMysteryBox/legendarySMB.jpg'%}"></video>
+                {% comment %} Mystery box details. {% endcomment %}
+                <div class="MBText">
+                    {% comment %} Upper row. {% endcomment %}
+                    <div class="row row1">
+                        <p class="left">{{legendary_box_label}}</p>
+                        {% comment %} Price in SOL. {% endcomment %}
+                        <p class="right">{{legendary_price}} SOL</p>
+                    </div>
+                    {% comment %} Lower row. {% endcomment %}
+                    <div class="row row2">
+                        <p class="left">Win {{legendary_max_reward}} Sol</p>
+                        {% comment %} Price in $. {% endcomment %}
+                        <p class="right">${{dollar_legendary_price}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<script>
+    // JS to play the video when the Mystery Box is hovered
+    function handleMysteryBox(boxId, videoId) {
+        const video = document.querySelector(`#${videoId}`);
+        const mysterybox = document.querySelector(`#${boxId}`);
+        let timeout;
+        mysterybox.addEventListener('mouseenter', function() {
+          clearTimeout(timeout); // Clear any existing timeout
+          video.classList.add('play');
+          video.play();
+        });
+        mysterybox.addEventListener('mouseleave', function() {
+          timeout = setTimeout(() => {
+            video.classList.remove('play');
+            video.pause();
+          }, 200); // Delay in milliseconds
+        });
+        mysterybox.addEventListener('mouseenter', function() {
+          clearTimeout(timeout); // Clear the timeout when re-entering
+        });
+    }
+    // Call the function for each mystery box
+    handleMysteryBox('MysteryBox1', 'common_box_video');
+    handleMysteryBox('MysteryBox2', 'epic_box_video');
+    handleMysteryBox('MysteryBox3', 'legendary_box_video');
+</script>
+{%endblock content%}

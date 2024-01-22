@@ -1,0 +1,30 @@
+puppy = (
+    "Puppy",
+    (
+        'Bella Poodle', 'Charlie Labrador', 'Max Dachshund', 'Lucy Golden Retriever', 'Cooper Beagle',
+        'Lola French Bulldog', 'Bailey Shih Tzu', 'Rocky Boxer', 'Sadie German Shepherd',
+        'v', 'Molly Yorkshire Terrier', 'Duke Bulldog', 'Zoe Chihuahua', 'Oliver Shiba Inu',
+        'Lily Maltese', 'Tucker Pomeranian', 'Ruby Doberman', 'Winston Rottweiler', 'Coco Husky',
+        'Rosie Great Dane', 'Zeus Australian Shepherd', 'Luna Shetland Sheepdog', 'Riley Border Collie',
+        'Chloe Shiba Inu', 'Bear Saint Bernard', 'Penny Cocker Spaniel', 'Leo Pug', 'Sasha Boxer',
+        'Milo Shih Tzu', 'Daisy Shetland Sheepdog', 'Jack Jack Russell Terrier', 'Sophie Poodle',
+        'Oscar Dachshund', 'Lilly Shetland Sheepdog', 'Bentley Shih Tzu', 'Zoey Beagle', 'Cody Bulldog',
+        'Abby German Shepherd', 'Jax Labrador', 'Koda Siberian Husky', 'Emma Pomeranian', 'Sam Corgi',
+        'Gus Shih Tzu', 'Lulu Poodle', 'Jasper Shiba Inu', 'Maddie French Bulldog', 'Hank Boxer',
+        'Roxy Cocker Spaniel', 'Zeke Beagle', 'Gracie Dachshund', 'Finn Australian Shepherd',
+        'Stella Shetland Sheepdog', 'Louie Pug', 'Cleo Maltese', 'Simba Persian Cat', 'Nala Siamese Cat',
+        'Rusty Bengal Cat', 'Mia Ragdoll Cat', 'Toby Maine Coon Cat', 'Lady Cat', 'Winnie Persian Cat',
+        'Kobe Siamese Cat', 'Lexi Bengal Cat', 'Charlie Ragdoll Cat', 'Gigi Maine Coon Cat',
+        'Mocha Abyssinian Cat', 'Minnie Sphynx Cat', 'Dexter Ragdoll Cat', 'Piper Siamese Cat',
+        'Bruno Bengal Cat', 'Callie Ragdoll Cat', 'Otis Maine Coon Cat', 'Poppy Sphynx Cat', 'Ace Siamese Cat',
+        'Athena Bengal Cat', 'Kai Ragdoll Cat', 'Remy Maine Coon Cat', 'Willow Sphynx Cat',
+        'Rocco Siamese Cat', 'Harley Bengal Cat', 'Maggie Ragdoll Cat', 'Hudson Maine Coon Cat',
+        'Griffin Sphynx Cat', 'Cupcake Siamese Cat', 'Olivia Bengal Cat', 'Gizmo Ragdoll Cat',
+        'Ziggy Maine Coon Cat', 'Ella Sphynx Cat', 'Tank Siamese Cat', 'Ruby Bengal Cat',
+        'Pippin Ragdoll Cat', 'Chester Maine Coon Cat', 'Aurora Sphynx Cat', 'Loki Siamese Cat',
+        'Zara Bengal Cat', 'Sunny Ragdoll Cat', 'Mia Maine Coon Cat', 'Mango Sphynx Cat',
+        'Pepper Siamese Cat', 'Trixie Bengal Cat', 'Joey Ragdoll Cat', 'Layla Maine Coon Cat',
+        'Blue Sphynx Cat', 'Harper Siamese Cat', 'Daisy Bengal Cat', 'Apollo Ragdoll Cat',
+        'Nova Maine Coon Cat', 'Rusty Sphynx Cat', 'Ginger Siamese Cat', 'Pablo Bengal Cat'
+    )
+)

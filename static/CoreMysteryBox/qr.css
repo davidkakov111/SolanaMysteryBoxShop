@@ -1,0 +1,118 @@
+#qloadingbox {
+    position: absolute;
+    width: 200px;
+    height: 240px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.qspinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 83.3%;
+    animation: qspin 2s linear infinite;
+}
+.qloadingtxt {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 30%);
+    bottom: 0;
+    font-size: 150%;
+    font-weight: 450;
+    color: aliceblue;
+}
+@keyframes qspin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.qr_out {
+    position: absolute; 
+    box-shadow: 8px 8px 15px rgb(0, 0, 0);
+    width: 320px;
+    height: 370px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -46%); 
+    background-color: rgb(19, 123, 25);
+    z-index: 2;
+    border-radius: 10px;
+}
+.qr_out:hover {
+    transform: translate(-50%, -46%) scale(0.99);
+    box-shadow: none;
+}
+.qr_out:active {
+    transform: translate(-50%, -45%) scale(0.96);
+}
+#qr_in {
+    position: absolute; 
+    width: 100%;
+    height: 320px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.anonym-link {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    position: absolute;
+    text-align: center;
+    font-weight: 600;
+    font-size: large;
+    height: 30px;
+    width: 100%;
+}
+.top {
+    top: 4px;
+    z-index: 1;
+}
+.bottom {
+    bottom: 1%;
+    z-index: 1;
+}
+.More-info {
+    position: absolute;
+    color: rgb(181, 223, 231);
+    height: 5%;
+    width: 100px;
+    bottom: 0;
+    padding-bottom: 2.4%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+@media (min-height: 800px) {
+    .qr_out {
+        width: 400px;
+        height: 450px;
+    }
+    #qr_in {
+        height: 400px;
+    }
+}
+@media (max-height: 650px) {
+    .qr_out {
+        width: 300px;
+        height: 350px;
+    }
+    #qr_in {
+        height: 300px;
+    }
+    .anonym-link {
+        font-size: medium;
+    }
+}
+@media (max-width: 350px) {
+    .qr_out {
+        width: 270px;
+        height: 320px;
+    }
+    #qr_in {
+        height: 270px;
+    }
+    .anonym-link {
+        font-size: medium;
+    }
+}

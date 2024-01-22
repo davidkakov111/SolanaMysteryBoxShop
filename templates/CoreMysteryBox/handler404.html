@@ -1,0 +1,28 @@
+{%extends 'CoreMysteryBox/base.html'%}
+{%block title%}404{%endblock title%}
+{% comment %} Block for styles. {% endcomment %}
+{%block style%}
+#img404 {
+    position: absolute;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+@media (max-width: 600px) and (min-height: 480px){
+    #img404 {
+        height: 30%;
+    }
+}
+@media (max-width: 360px) and (min-height: 800px){
+    #img404 {
+        height: 20%;
+    }
+}
+{%endblock style%}
+{%block content%}
+<div id="img404">
+    {%load static%}
+    <img position="absolute" height="100%" src="{% static 'CoreMysteryBox/404.png'%}" alt="404">
+</div>
+{%endblock content%}

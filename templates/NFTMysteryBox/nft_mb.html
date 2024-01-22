@@ -1,0 +1,45 @@
+{%extends 'CoreMysteryBox/base.html'%}
+{%block title%}NFT Mystery Boxes{%endblock title%}
+{%block styleBODY%}
+overflow-y: hidden;
+{%endblock styleBODY%};
+{%block head%}
+{% comment %} Loading css file and static. {% endcomment %}
+{%load static%}
+<link rel="stylesheet" type="text/css" href="{% static 'NFTMysteryBox/nft_mb.css' %}">
+{%endblock head%}
+{%block content%}
+{% comment %} Mystery Boxes {% endcomment %}
+{% comment %} Div to make overflow the mystery boxes horizontally. {% endcomment %}
+<div class="MBBox1">
+    {% comment %} Inside div for the mystery boxes. {% endcomment %}
+    <div class="MBBox2">
+        {% comment %} Puppy mystery box. {% endcomment %}
+        <div class="MysteryBox" id="PuppyMysteryBox">
+            {% comment %} Anchor tag to be clickable the mystery box. {% endcomment %}
+            <a href="{% url 'NFTMB_generate_qr' puppy_box_label puppy_price%}">
+                {% comment %} Puppy mystery box image {% endcomment %}
+                <img class="MBimg" src="{% static 'NFTMysteryBox/puppyMB.jpg'%}" alt="Puppy Mystery Box">
+                {% comment %} Mystery box details. {% endcomment %}
+                <div class="MBText">
+                    {% comment %} Upper row. {% endcomment %}
+                    <div class="row row1">
+                        <p class="left">{{puppy_box_label}}</p>
+                        {% comment %} Price in SOL. {% endcomment %}
+                        <p class="right">{{puppy_price}} SOL</p>
+                    </div>
+                    {% comment %} Lower row. {% endcomment %}
+                    <div class="row row2">
+                        <p class="left">Own Your Puppy</p>
+                        {% comment %} Price in $. {% endcomment %}
+                        <p class="right">${{puppy_Dollar}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div>
+            {% comment %} pass {% endcomment %}
+        </div>
+    </div>
+</div>
+{%endblock content%}
