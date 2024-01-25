@@ -9,7 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
   // Comparing the API key
   const apiKey = req.headers.authorization;
-  if (apiKey !== 'cnieh57t85gsk494i0gd%689ijuhdy#4%$dfuvuvty6nd') {
+  if (apiKey !== 'Non public :)') {
     return res.status(401).json({ message: 'Unauthorized!' });
   }
   // Mint the NFT to the provided pubkey
