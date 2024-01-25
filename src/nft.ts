@@ -1,7 +1,7 @@
 import { Connection, Keypair} from "@solana/web3.js";
 import { Metaplex, keypairIdentity, toBigNumber, AccountNotFoundError, PublicKey} from "@metaplex-foundation/js";
 import * as bs58 from 'bs58';
-
+ 
 // Function for minting the NFT 
 export async function mintNft(
   metadataUri: string,
