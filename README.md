@@ -1,5 +1,5 @@
 [Solana Mystery Box Shop](https://solanamysterybox.vercel.app/): Revolutionizing Crypto Payments 🚀💰
-------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------ 
 
 # Introduction:
 In the dynamic world of cryptocurrencies, the Solana Mystery Box Shop emerges as a pioneering platform reshaping online payments. Powered by Django and Next.js, it streamlines crypto transactions while upholding robust security measures.
