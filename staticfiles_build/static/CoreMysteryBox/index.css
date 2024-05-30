@@ -1,0 +1,338 @@
+#content {
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+#box_div{
+    position: absolute;
+    top: 50%;
+    right: 25%;
+    transform: translate(50%, -50%);
+    height: 100%;
+}
+#blockchainbox {
+    transform: translateY(10%);
+    width: 100%;
+    height: 90%;
+    z-index: 1;
+}
+#question_mark {
+    position: absolute;
+    height: 40%;
+    left: 35%;
+    z-index: 2;
+    top: 5%;
+    animation: question_mark_animation 6s linear infinite;
+}
+#text_box {
+    position: absolute;
+    width: 37%;
+    height: 450px;
+    top: 45%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+#title {
+    font-size: 80px;
+    color: rgb(165, 223, 234);
+    text-align: center;
+    cursor: default;
+}
+#description {
+    font-size: 23px;
+    color: rgb(165, 223, 234);
+    text-align: center;
+    cursor: default;
+}
+.Button {
+    position: absolute;
+    height: 65px;
+    width: 300px;
+    bottom: 0;
+    left: 31%;
+    font-size: 25px;
+    font-weight: bolder;
+    color: rgb(165, 223, 234);
+    border: 2px solid rgb(165, 223, 234);
+    border-radius: 40px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.Button:hover {
+    color: rgb(17, 13, 61);
+    background-color: rgb(165, 223, 234);
+}
+#NFTMysteryBox {
+    position: absolute;
+    height: 60px;
+    width: 300px;
+    bottom: 22%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 25px;
+    font-weight: bolder;
+    color: rgb(165, 223, 234);
+    border: 2px solid rgb(165, 223, 234);
+    border-radius: 40px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background: linear-gradient(to right, #0b3e76, #3a0664);
+}
+#NFTMysteryBox:hover {
+    color: rgb(17, 13, 61);
+    border: 0px;
+    background: linear-gradient(to right, #1c80eb, #9219f6);
+    transform: translate(-50%, -10%);
+}
+#NFTMysteryBox:active {
+    transform: translate(-50%, 0%);
+}
+#TokenMysteryBox {
+    transform: translateX(55%);
+}
+#TokenMysteryBox:hover {
+    transform: translate(55%, -10%);
+}
+#TokenMysteryBox:active {
+    transform: translate(55%, 0%);
+}
+#SolanaMysteryBox {
+    transform: translateX(-55%);
+}
+#SolanaMysteryBox:hover {
+    transform: translate(-55%, -10%);
+}
+#SolanaMysteryBox:active {
+    transform: translate(-55%, 0%);
+}
+@keyframes question_mark_animation {
+    0% {
+        transform: rotate(0deg) translateY(20px);
+    }
+    25% {
+        transform: rotate(-3deg) translateY(0px);
+    }
+    50% {
+        transform: rotate(0deg) translateY(20px);
+    }
+    75% {
+        transform: rotate(3deg) translateY(0px);
+    }
+    100% {
+        transform: rotate(0deg) translateY(20px);
+    }
+}
+@media (max-height: 800px) {
+    #text_box {
+        width: 37%;
+        height: 350px;
+    }
+    #title {
+        font-size: 60px;
+    }
+    #description {
+        font-size: 20px;
+    }
+    .Button {
+        height: 52px;
+        width: 270px;
+        left: 32%;
+        font-size: 23px;
+        font-weight: bold;
+    }
+    #NFTMysteryBox {
+        height: 49px;
+        width: 270px;
+        font-size: 23px;
+        font-weight: bold;
+    }
+}
+@media (max-width: 2000px) {
+    #text_box {
+        width: 35%;
+        height: 350px;
+    }
+    #title {
+        font-size: 55px;
+    }
+    #description {
+        font-size: 19px;
+    }
+    .Button {
+        height: 45px;
+        width: 230px;
+        left: 33%;
+        font-size: 20px;
+    }
+    #NFTMysteryBox {
+        height: 43px;
+        width: 230px;
+        font-size: 20px;
+    }
+}
+@media (max-width: 1600px) {
+    #text_box {
+        width: 45%;
+    }
+}
+@media (max-width: 1300px) {
+    .Button {
+        left: 28%;
+    }
+    #text_box {
+        left: 27%;
+    }
+}
+@media (max-width: 1100px) {
+    #text_box {
+        width: 50%;
+        height: 300px;
+    }
+    #title {
+        font-size: 45px;
+    }
+    #description {
+        font-size: 15px;
+    }
+    .Button {
+        height: 40px;
+        width: 200px;
+        left: 30%;
+        font-size: 15px;
+    }
+    #NFTMysteryBox {
+        height: 40px;
+        width: 200px;
+        font-size: 15px;
+    }
+    #box_div{
+        right: 20%;
+        height: 80%;
+    }
+}
+@media (max-width: 1000px) {
+    #content {
+        top: 55px;
+    }
+    #box_div{
+        right: 23%;
+        height: 70%;
+    }
+}
+@media (max-width: 900px) {
+    #text_box {
+        height: 250px;
+    }
+    #title {
+        font-size: 38px;
+    }
+    #description {
+        font-size: 12px;
+    }
+    .Button {
+        height: 35px;
+        width: 150px;
+        left: 32%;
+        font-size: 13px;
+    }
+    #NFTMysteryBox {
+        height: 35px;
+        width: 150px;
+        font-size: 13px;
+    }
+    #box_div {
+        height: 65%;
+    }
+}
+@media (max-width: 770px) {
+    #content {
+        top: 50px;
+    }
+}
+@media (max-width: 700px) {
+    #text_box {
+        width: 384px;
+        height: 260px;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    #title {
+        font-size: 35px;
+    }
+    .Button {
+        left: 33%;
+        border: 1px solid rgb(165, 223, 234);
+    }
+    #NFTMysteryBox {
+        border: 1px solid rgb(165, 223, 234);
+    }
+    #box_div{
+        top: 20%;
+        right: 50%;
+        transform: translate(50%, -50%);
+        height: 35%;
+    }
+    #question_mark {
+        height: 35%;
+        top: 0%;
+    }
+}
+@media (max-width: 450px) {
+    #content {
+        top: 48px;
+    }
+    .Button {
+        height: 30px;
+        width: 120px;
+        left: 33%;
+        font-size: 10px;
+    }
+    #NFTMysteryBox {
+        height: 30px;
+        width: 120px;
+        font-size: 10px;
+    }
+    #box_div{
+        width: 175px;
+        height: 189px;
+    }
+    #title {
+        font-size: 30px;
+    }
+    #text_box {
+        width: 300px;
+    }
+}
+@media (max-width: 350px) {
+    .Button {
+        height: 25px;
+        width: 110px;
+        left: 31%;
+        font-size: 9px;
+    }
+    #NFTMysteryBox {
+        height: 25px;
+        width: 110px;
+        font-size: 9px;
+    }
+    #text_box {
+        width: 250px;
+        height: 280px;
+    }
+}
+@media (max-width: 600px) and (max-height: 700px) {
+    #box_div{
+        top: 18%;
+        width: 129px;
+        height: 140px;
+    }
+}
