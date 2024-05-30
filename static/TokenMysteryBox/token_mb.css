@@ -1,0 +1,259 @@
+.MBBox1 {
+    position: absolute;
+    overflow-y: hidden;
+    overflow-x: auto;
+    top: 50%;
+    transform: translateY(-45%);
+    height: 75%;
+    width: 100%;
+}
+.MBBox2 {
+    position: absolute;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: 100%;
+    width: 1650px;
+}
+.MysteryBox {
+    position: absolute;
+    border-radius: 7%;
+    overflow: hidden;
+    width: 400px;
+    height: 485px;
+    top: 50%;
+    transform: translate(-50%, -55%); 
+}
+.MBimg {
+    position: absolute;
+    width:100%;
+    height: 75%;
+}
+.MysteryBox:hover img{
+    transform: scale(1.1, 1.1);
+    transition: transform 0.4s ease;
+}
+.MBText {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 25%;
+    background-color: rgb(17, 9, 28);
+    color: rgb(250, 252, 194);
+    padding-left: 4%;
+    padding-right: 4%;
+}
+.MBText p{
+    font-weight: 530;
+    font-size: 140%;
+}
+.row1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    height: 55%;
+}
+.row2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    bottom: 0;
+    height: 55%;
+}
+.right {
+    text-align: right;
+    white-space: nowrap;
+    flex: 1;
+}
+.left {
+    text-align: left;
+    white-space: nowrap;
+    flex: 1;
+}
+#MysteryBox1 {
+    border: 1px solid rgba(110, 71, 187, 0.6);
+    left: 18%;
+    box-shadow: 0px 0px 5px 3px rgba(96, 50, 187, 0.4);
+}
+#MysteryBox1:hover {
+    border: 1px solid rgb(104, 63, 185, 0.9); 
+    box-shadow: 0px 0px 10px 3px rgba(96, 50, 187, 0.8); 
+}
+#MysteryBox2 {
+    border: 1px solid rgba(0, 179, 255, 0.5);
+    left: 50%;
+    box-shadow: 0px 0px 5px 3px rgba(0, 179, 255, 0.3);
+}
+#MysteryBox2:hover {
+    border: 1px solid rgb(37, 188, 252, 0.9);
+    box-shadow: 0px 0px 10px 3px rgba(0, 179, 255, 0.7);
+}
+#MysteryBox3 {
+    transform: translate(50%, -55%);
+    border: 1px solid rgb(0, 255, 140, 0.5);
+    right: 18%;
+    box-shadow: 0px 0px 5px 3px rgba(0, 255, 140, 0.3);
+}
+#MysteryBox3:hover {
+    border: 1px solid rgb(46, 253, 160);
+    box-shadow: 0px 0px 10px 3px rgba(0, 255, 140, 0.8);
+}
+@media (min-width: 800px) and (max-height: 650px) {
+    .MBBox2 {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+@media (min-width: 900px) and (max-height: 750px) {
+    .MBBox2 {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+@media (min-width: 1100px) and (max-height: 900px) {
+    .MBBox2 {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+@media (min-width: 1300px) and (max-height: 970px) {
+    .MBBox2 {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+@media (min-width: 1650px) and (min-height: 970px) {
+    .MBBox2 {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+@media (max-width: 1000px) {
+    .MBBox2 {
+        width: 1300px;
+    }
+    .MysteryBox {
+        width: 350px;
+        height: 450px;
+    }
+}
+@media (max-width: 800px) {
+    .MBBox2 {
+        width: 1100px;
+    }
+    .MysteryBox {
+        width: 300px;
+        height: 364px;
+    }
+    .MBText p{
+        font-weight: 280;
+        font-size: 130%;
+    }
+}
+@media (max-width: 500px) {
+    .MBBox2 {
+        width: 900px;
+    }
+    .MysteryBox {
+        width: 250px;
+        height: 303px;
+    }
+    .MBText p{
+        font-weight: 380;
+        font-size: 100%;
+    }
+}
+@media (max-width: 414px) {
+    .MBBox2 {
+        width: 800px;
+    }
+    .MysteryBox {
+        width: 300px;
+        height: 242px;
+    }
+    .MBText p{
+        font-weight: 280;
+        font-size: 90%;
+    }
+}
+@media (max-height: 970px) {
+    .MBBox2 {
+        width: 1300px;
+    }
+    .MysteryBox {
+        width: 350px;
+        height: 450px;
+    }
+    .MBText p{
+        font-weight: 530;
+        font-size: 130%;
+    }
+}
+@media (max-height: 900px) {
+    .MBBox2 {
+        width: 1100px;
+    }
+    .MysteryBox {
+        width: 300px;
+        height: 364px;
+    }
+    .MBText p{
+        font-weight: 380;
+        font-size: 120%;
+    }
+}
+@media (max-height: 750px) {
+    .MBBox2 {
+        width: 900px;
+    }
+    .MysteryBox {
+        width: 250px;
+        height: 303px;
+    }
+    .MBText p{
+        font-weight: 330;
+        font-size: 100%;
+    }
+}
+@media (max-height: 650px) {
+    .MBBox2 {
+        width: 800px;
+    }
+    .MysteryBox {
+        width: 200px;
+        height: 242px;
+    }
+    .MBText p{
+        font-weight: 280;
+        font-size: 90%;
+    }
+}
+@media (max-width: 415px) {
+    .MBBox2 {
+        width: 800px;
+    }
+    .MysteryBox {
+        width: 200px;
+        height: 242px;
+    }
+    .MBText p{
+        font-weight: 280;
+        font-size: 90%;
+    }
+}
+@media (max-width: 300px) and (max-height: 660px) {
+    .MBBox2 {
+        width: 620px;
+    }
+    .MysteryBox {
+        width: 150px;
+        height: 181px;
+    }
+    .MBText p{
+        font-weight: 200;
+        font-size: 70%;
+    }
+    .MBText {
+        height: 18%;
+    }
+}

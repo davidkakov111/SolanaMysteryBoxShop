@@ -1,0 +1,63 @@
+{%extends 'CoreMysteryBox/base.html'%}
+{%block title%}QR Payment{%endblock title%}
+{%block styleBODY%}
+overflow-y: hidden;
+{%endblock styleBODY%};
+{%block head%}
+{% comment %} Loading css file and static. {% endcomment %}
+{%load static%}
+<link rel="stylesheet" type="text/css" href="{% static 'CoreMysteryBox/qr.css' %}">
+{%endblock head%}
+{%block content%}
+<div id="qqr_out">
+    {% comment %} Displaying the qr code. {% endcomment %}
+    <div class="qr_out">
+        {% comment %} QR button. {% endcomment %}
+        <a href="{% url MB_PaymentView %}" id="qpayment-link">
+            <div class="anonym-link top">
+                <p>1. Scan and confirm the payment.</p>
+            </div>
+            {% comment %} QR code inside div. {% endcomment %}
+            <div id="qr_in">
+                {% comment %} Qr code. {% endcomment %}
+                <img width="100%" height="100%" position="absolute" src="data:image/png;base64,{{ qr }}" alt="QR Code">
+            </div>
+            <div class="anonym-link bottom">
+                <p>2. Click here, and you're Done!</p>
+            </div>
+        </a>
+    </div>
+    {% comment %} Learn more button. {% endcomment %}
+    <div class="More-info">
+        <a href="{%url MB_Learn %}"><p>Learn More</p></a>
+    </div>
+</div>
+{% comment %} Solana loading icon outside div. {% endcomment %}
+<div id="qloadingbox">
+    {% comment %} Solana loading icon inside div. {% endcomment %}
+    <div class="qspinner">
+        {% comment %} Solana loading icon.{% endcomment %}
+        <img position="absolute" width="100%" height="100%" src="{% static 'CoreMysteryBox/solana.png'%}" alt="Loading">
+    </div>
+    {% comment %} Subtitle {% endcomment %}
+    <p class="qloadingtxt">Processing...</p>
+</div>
+{% comment %} Displaying the loadig Solana icon with JS. {% endcomment %}
+<script>
+    var qloader = document.getElementById("qloadingbox");
+    var qqr = document.getElementById("qqr_out");
+    qloader.style.display = "none";
+    {% comment %} Java Script to display. {% endcomment %}
+    document.getElementById("qpayment-link").addEventListener("click", function(event) {
+        qshowLoader();
+    });
+    function qshowLoader() {
+        qloader.style.display = "block";
+        qqr.style.display = "none";
+        window.addEventListener("pageshow", function() {
+            qloader.style.display = "none";
+            qqr.style.display = "block";
+        })
+    }
+</script> 
+{%endblock content%}

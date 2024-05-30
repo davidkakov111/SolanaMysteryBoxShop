@@ -1,0 +1,108 @@
+{%extends 'CoreMysteryBox/base.html'%}
+{%block title%}Solana Mystery Boxes{%endblock title%}
+{%block styleBODY%}
+overflow-y: auto;
+{%endblock styleBODY%}
+{%block head%}
+{% comment %} Loading css file and static. {% endcomment %}
+{%load static%}
+<link rel="stylesheet" type="text/css" href="{% static 'SolanaMysteryBox/solanaMB_response.css' %}">
+{%endblock head%}
+{%block content%}
+{% comment %} Response contents. {% endcomment %}
+{%if payment_response%}
+    <div id="rconten" class="a">
+        {% comment %} Response texts. {% endcomment %}
+        <p class="txt1">{{text1}}</p>
+        <p class="txt2">{{text2}}</p>
+        <br>
+        <br>
+        {% comment %} Response links. {% endcomment %}
+        {%if new%}
+            <p class="link"><a id="rrpayment-link" href={%url "Solanamb"%}>{{new}}</a></p>
+        {%else%} 
+            {%if weakconnection%}
+                <p class="link"><a id="rpayment-link" href={%url "SolanaMB-PV"%}>{{link1}}</a></p>
+            {%else%}
+                <p class="link"><a id="rpayment-link" href={%url "SolanaMB-PV"%}>{{link1}}</a> or <a href={%url "learn-solanaMB"%}>{{link2}}</a></p>
+            {%endif%}    
+        {%endif%}
+    </div>
+{% comment %} Learn more infos. {% endcomment %}
+{%elif learn%}
+    <div class="info">
+        <div class="BoxForLineAndTitle">
+            <div class="vertical-line1"></div>
+            <p class="title">Payment process</p>
+        </div>
+        <p class="fs">After selecting your Solana Mystery Box:</p>
+        <ul>
+            <li><p class="fs">Use any Solana-compatible crypto wallet.</p></li>
+            <li><p class="fs">In your wallet, navigate to the send Solana section and activate the scanner. (Solana wallet users also can use the main page scanner.)</p></li>
+            <li><p class="fs">Scan the QR code.</p></li>
+            <li><p class="fs">Your wallet will display a payment request for your chosen Solana Mystery Box.</p></li>
+            <li><p class="fs">Review the transaction details and send it without any modifications to avoid unintended consequences.</p></li>
+            <li><p class="fs">After sending the transaction, click on the QR code.</p></li>
+            <li><p class="fs">You will then be redirected to a response page where you'll receive messages indicating the winning amount of Solana and see your reward in your wallet.</p></li>
+        </ul>
+        <p class="fs">The received amount of Solana is random and varies based on the Mystery Box:</p>
+        <ul>
+            <li><p class="fs">Common Mystery Box: Random amount of Solana, starting from 0.01 Solana and decreasing in fractions such as 0.001, 0.0001, and so on, down to 1 lamport (a fraction of Solana).</p></li>
+            <li><p class="fs">Epic Mystery Box: Random amount of Solana, starting from 0.5 Solana and decreasing in fractions such as 0.05, 0.005, and so on, down to 5 lamport (a fraction of Solana).</p></li>
+            <li><p class="fs">Legendary Box: Random amount of Solana, starting from 1 Solana and decreasing in fractions such as 0.1, 0.01, and so on, down to 1 lamport (a fraction of Solana).</p></li>
+        </ul>
+        <p class="fs">Transform Your Life and Multiply Your Money Today! Seize this opportunity for Yourself and Your Loved Ones!</p>
+        <br>
+        <div class="BoxForLineAndTitle">
+            <div class="vertical-line2"></div>
+            <p class="title">Responses:</p>
+        </div>
+        <p class="fs">If you encounter a different response, such as:</p>
+        <ul>
+            <li><p class="fs">'No payment has been received' - Even though you've made the payment, it indicates that your transaction hasn't yet been recorded on the blockchain. However, this isn't an issue because you can try again once the transaction it's confirmed. Alternatively, if you've modified the recipient address, your transaction is irretrievable, and no one can assist you in this situation.</p></li>
+            <li><p class="fs">'No valid payment has been received' - This response may indicate that your payment is invalid for various reasons, such as recipient modification or deletion of the payment amount. However, at times, it may occur due to independent transactions on your part. Therefore, it is not always a cause for serious concern.</p></li>
+            <li><p class="fs">'The payment amount is insufficient, so it has been refunded to your wallet!' - It indicates that you reduced the payment amount, which is not enough even for the cheapest Solana Mystery Box. Consequently, your payment amount, after deducting the expected transaction fee for your refund, has been redirected to your wallet.</p></li>
+            <li><p class="fs">'This payment is being processed. Please wait!' - It indicates that the next payment or your payment is currently being processed. After a few seconds, you can try again.</p></li>
+        </ul>
+    </div>
+{%endif%}
+{% comment %} Displaying the loadig solana icon with JS on various pages. {% endcomment %}
+{% comment %} Loading solana icon outside div. {% endcomment %}
+<div id="rloadingbox">
+    {% comment %} Loading solana icon inside div. {% endcomment %}
+    <div class="rspinner">
+        {% comment %} Loading solana icon. {% endcomment %}
+        <img position="absolute" width="100%" height="100%" src="{% static 'CoreMysteryBox/solana.png'%}" alt="Solana logo">
+    </div>
+    {% comment %} Subtitle. {% endcomment %}
+    {%if new%}
+        <p class="rloadingtxt">Loading...</p>
+    {%else%}
+        <p class="rloadingtxt">Processing...</p>
+    {%endif%}
+</div>
+{% comment %} Java Script code to display. {% endcomment %}
+<script>
+    var rloader = document.getElementById("rloadingbox");
+    var rcn = document.getElementById("rconten");
+    rloader.style.display = "none";
+    var isNew = {% if new %} true {% else %} false {% endif %};
+    if (isNew) {
+        document.getElementById("rrpayment-link").addEventListener("click", function(event) {
+            rshowLoader();
+        });
+    } else {
+        document.getElementById("rpayment-link").addEventListener("click", function(event) {
+            rshowLoader();
+        });
+    }
+    function rshowLoader() {
+        rloader.style.display = "block";
+        rcn.style.display = "none";
+        window.addEventListener("pageshow", function() {
+            rloader.style.display = "none";
+            rcn.style.display = "block";
+        });
+    }
+</script>
+{%endblock content%}

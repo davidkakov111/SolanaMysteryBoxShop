@@ -1,0 +1,60 @@
+{%extends 'CoreMysteryBox/base.html'%}
+{%block title%}Mystery Box{%endblock title%}
+{%block styleBODY%}
+overflow-y: hidden;
+{%endblock styleBODY%};
+{%block head%}
+{% comment %} Loading css file and static. {% endcomment %}
+{%load static%}
+<link rel="stylesheet" type="text/css" href="{% static 'CoreMysteryBox/index.css' %}">
+{%endblock head%}
+{%block content%}
+<div id="content">
+    <div id="box_div">
+        <div id="question_mark">
+            <img position="absolute" width="100%" height="100%" src="{%static 'CoreMysteryBox/question_mark.png'%}">
+        </div>
+        <div id="blockchainbox">
+            <img position="absolute" width="100%" height="100%" src="{%static 'CoreMysteryBox/blockchainbox.png'%}">
+        </div>
+    </div>
+    <div id="text_box">
+        <p id="title">Mystery Boxes</p>
+        <p id="description">Unbox your fortune in NFT, Solana and Token Mystery Boxes! Dive into a world of abundance where the Mystery Boxes contains mysteryous NFTs, unknown amount of Solana and Token prizes, reaching up to a Trillion</p>
+        <a href="{%url 'NFTmb'%}"><div id="NFTMysteryBox" class="buttons">NFT Mystery Boxes</div></a>
+        <a href="{%url 'Solanamb'%}"><div id="SolanaMysteryBox" class="Button buttons">Solana Mystery Boxes</div></a>
+        <a href="{%url 'Tokenmb'%}"><div id="TokenMysteryBox" class="Button buttons">Token Mystery Boxes</div></a>
+    </div>
+</div>
+{% comment %} Solana loading icon outside div. {% endcomment %}
+<div id="spinner_box">
+    {% comment %} Solana loading icon inside div. {% endcomment %}
+    <div class="spinner">
+        {% comment %} Solana loading icon. {% endcomment %}
+        <img position="absolute" width="100%" height="100%" src="{% static 'CoreMysteryBox/solana.png'%}" alt="Loading">
+    </div>
+    {% comment %} Subtitle {% endcomment %}
+    <p class="loadingtxt">Loading...</p>
+</div>
+<script>
+    {%comment%} Display the Solana loading spinner using JavaScript 
+    for elements with the 'loading_spinner' class. {% endcomment %}
+    var loader = document.getElementById("spinner_box");
+    var content = document.getElementById("content");
+    var buttons = document.querySelectorAll(".buttons");
+    loader.style.display = "none";
+    buttons.forEach(function(button) {
+        button.addEventListener("click", function(event) {
+            showLoader();
+        });
+    });
+    function showLoader() {
+        loader.style.display = "block";
+        content.style.display = "none";
+        window.addEventListener("pageshow", function() {
+            loader.style.display = "none";
+            content.style.display = "block";
+        });
+    }
+</script> 
+{%endblock content%}

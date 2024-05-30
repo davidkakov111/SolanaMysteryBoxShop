@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%block head%}{%endblock head%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} Block for title. {% endcomment %}
+    <title>{%block title%}{%endblock title%}</title>
+    {% comment %} Load static, favicon.ico and css file{% endcomment %}
+    {%load static%}
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{% static 'CoreMysteryBox/base.css' %}">
+    {% comment %} Bootstrap. {% endcomment %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" 
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity=
+      "sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>  
+    <style>
+      {% comment %} Body (Island) style. {% endcomment %}
+      .BODY {
+        position: fixed;
+        top: 12%;
+        right: 0;
+        bottom: 12%;
+        left: 0;
+        background: linear-gradient(to bottom, rgb(9, 21, 71), rgb(14, 11, 49), rgb(20, 11, 42));
+        box-shadow: 0px 0px 10px 5px rgba(0, 255, 179);
+        overflow-x: hidden;
+        {% comment %} Block for additional styles for the BODY, like: "overflow-y: auto;"{% endcomment %}
+        {%block styleBODY%}{%endblock styleBODY%};
+      }
+      {% comment %} Block for styles. {% endcomment %}
+      {%block style%}{%endblock style%}
+    </style>
+</head>
+<body>
+  {% comment %} Background video. {% endcomment %}
+  <div class="fullscreen-bg">
+    <video src="{%static 'CoreMysteryBox/bgvid.mp4'%}" class="fullscreen" loop muted autoplay 
+      poster="{%static 'CoreMysteryBox/background.jpg'%}"></video>
+  </div>
+  {% comment %} The island body. {% endcomment %}
+  <div class="BODY">
+    {% comment %} Navigation bar. {% endcomment %}
+    <nav class="navbar navbar-expand mb-4 color">
+      <div class="container-fluid">
+        {% comment %} Navbar left content. {% endcomment %}
+        <ul class="navbar-nav">
+          {% comment %} Learn content, dropdown. {% endcomment %}
+          <a class="dropdown-toggle dropdown-label" href="#" id="dropdownmenu-learn" role="button" 
+            data-bs-toggle="dropdown" aria-expanded="False">Learn</a>
+          <div class="dropdown-menu dropdown-menu-learn" aria-labelledby="dropdownmenu-learn">
+            <a class="dropdown-context active" aria-current="page" 
+              href="{%url 'learn-NFTMB'%}"><p>NFT Mystery Boxes</p></a>
+            <a class="dropdown-context active" aria-current="page" 
+              href="{%url 'learn-solanaMB'%}"><p>Solana Mystery Boxes</p></a>
+            <a class="dropdown-context active" aria-current="page" 
+              href="{%url 'learn-tokenMB'%}"><p>Token Mystery Boxes</p></a>
+          </div>
+        </ul>
+        {% comment %} Logo. {% endcomment %}
+        <div id="logo" >
+          <a class="navbar-brand" href="{%url 'home'%}"><img position="absolute" widt="100%" height="100%" 
+            src="{% static 'CoreMysteryBox/logo.png'%}" alt="Logo"></a>
+        </div>
+        {% comment %} Navbar right content. {% endcomment %}
+        <ul class="navbar-nav">
+          <a class="dropdown-toggle dropdown-label" href="#" id="dropdownmenu-mysteryboxes" role="button" 
+            data-bs-toggle="dropdown" aria-expanded="False">MysteryBoxes</a>
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-mysteryboxes" 
+            aria-labelledby="dropdownmenu-mysteryboxes">
+            <a class="dropdown-context active loading_spinner" aria-current="page" 
+              href="{%url 'NFTmb'%}"><p>NFT Mystery Boxes</p></a>
+            <a class="dropdown-context active loading_spinner" aria-current="page" 
+              href="{%url 'Solanamb'%}"><p>Solana Mystery Boxes</p></a>
+            <a class="dropdown-context active loading_spinner" aria-current="page" 
+              href="{%url 'Tokenmb'%}"><p>Token Mystery Boxes</p></a>
+          </div>
+        </ul> 
+      </div>
+    </nav>
+    {% comment %} Div for content block. {% endcomment %}
+    <div id="BigBox">
+      {% comment %} Block for more content. {% endcomment %}
+      {%block content%}{%endblock content%}
+    </div>
+    {% comment %} With this "no_copyright_txt" variable 
+    can i turn off the copyright text and X logo {% endcomment %}
+    {%if not no_copyright_txt%}
+      {% comment %} Box for copyright text with "X" ("Twitter") logo. {% endcomment %}
+      <div class="copyright">
+        {% comment %} Clickable X logo to the account of this Solana Mystery Box shop on X. {% endcomment %}
+        <div class="x">
+          <a href="https://twitter.com/SolMysteryBox"><img src="{% static 'CoreMysteryBox/x.png'%}" alt="X" width="100%" 
+            height="100%" position="absolute"></a>
+        </div>
+        {% comment %} Copyright text. {% endcomment %}
+        © 2024 Solana Mystery Box. All rights reserved.
+      </div>
+    {%endif%}
+  </div>
+  {% comment %} Solana loading icon outside div. {% endcomment %}
+  <div id="loadingbox">
+    {% comment %} Solana loading icon inside div. {% endcomment %}
+    <div class="spinner">
+      {% comment %} Solana loading icon. {% endcomment %}
+      <img position="absolute" width="100%" height="100%" src="{% static 'CoreMysteryBox/solana.png'%}" alt="Loading">
+    </div>
+    {% comment %} Subtitle {% endcomment %}
+    <p class="loadingtxt">Loading...</p>
+  </div>
+  <script>
+    {%comment%} Display the Solana loading spinner using JavaScript 
+    for elements with the 'loading_spinner' class. {% endcomment %}
+    var loader = document.getElementById("loadingbox");
+    var content = document.getElementById("BigBox");
+    var buttons = document.querySelectorAll(".loading_spinner");
+    loader.style.display = "none";
+    buttons.forEach(function(button) {
+        button.addEventListener("click", function(event) {
+            showLoader();
+        });
+    });
+    function showLoader() {
+        loader.style.display = "block";
+        content.style.display = "none";
+        window.addEventListener("pageshow", function() {
+            loader.style.display = "none";
+            content.style.display = "block";
+        });
+    }
+  </script> 
+</body>
+</html>

@@ -1,0 +1,88 @@
+{%extends 'CoreMysteryBox/base.html'%}
+{%block title%}Token Mystery Boxes{%endblock title%}
+{%block styleBODY%}
+overflow-y: hidden;
+{%endblock styleBODY%};
+{%block head%}
+{% comment %} Loading css file and static. {% endcomment %}
+{%load static%}
+<link rel="stylesheet" type="text/css" href="{% static 'TokenMysteryBox/token_mb.css' %}">
+{%endblock head%}
+{%block content%}
+{% comment %} Mystery Boxes. {% endcomment %}
+{% comment %} Div to make overflow the mystery boxes horizontally. {% endcomment %}
+<div class="MBBox1">
+    {% comment %} Div with inside the mystery boxes. {% endcomment %}
+    <div class="MBBox2">
+        {% comment %} Common mystery box. {% endcomment %}
+        <div class="MysteryBox" id="MysteryBox1">
+            {% comment %} Anchor tag to be clickable the mystery box. {% endcomment %}
+            <a href="{% url 'TokenMB_generate_qr' common_box_label p1%}">
+                {% comment %} Mystery box image. {% endcomment %}
+                <img class="MBimg" src="{% static 'TokenMysteryBox/TokenMysteryBox1.jpg'%}">
+                {% comment %} Mystery box details. {% endcomment %}
+                <div class="MBText">
+                    {% comment %} Upper row. {% endcomment %}
+                    <div class="row1">
+                        <p class="left">{{common_box_label}}</p>
+                        {% comment %} Price in SOL. {% endcomment %}
+                        <p class="right">{{p1}} SOL</p>
+                    </div>
+                    {% comment %} Lower row. {% endcomment %}
+                    <div class="row2">
+                        <p class="left">Be a Millionaire!</p>
+                        {% comment %} Price in $. {% endcomment %}
+                        <p class="right">${{Dollar1}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% comment %} Epic mystery box. {% endcomment %}
+        <div class="MysteryBox" id="MysteryBox2">
+            {% comment %} Anchor tag to be clickable the mystery box. {% endcomment %}
+            <a href="{% url 'TokenMB_generate_qr' epic_box_label p2%}">
+                {% comment %} Mystery box image. {% endcomment %}
+                <img class="MBimg" src="{% static 'TokenMysteryBox/TokenMysteryBox2.jpg'%}">
+                {% comment %} Mystery box details. {% endcomment %}
+                <div class="MBText">
+                    {% comment %} Upper row. {% endcomment %}
+                    <div class="row1">
+                        <p class="left">{{epic_box_label}}</p>
+                        {% comment %} Price in SOL. {% endcomment %}
+                        <p class="right">{{p2}} SOL</p>
+                    </div>
+                    {% comment %} Lower row. {% endcomment %}
+                    <div class="row2">
+                        <p class="left">Be a Billionaire!</p>
+                        {% comment %} Price in $. {% endcomment %}
+                        <p class="right">${{Dollar2}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% comment %} Legendary mystery box. {% endcomment %}
+        <div class="MysteryBox" id="MysteryBox3">
+            {% comment %} Anchor tag to be clickable the mystery box. {% endcomment %}
+            <a href="{% url 'TokenMB_generate_qr' legendary_box_label p3%}">
+                {% comment %} Mystery Box image. {% endcomment %}
+                <img class="MBimg" src="{% static 'TokenMysteryBox/TokenMysteryBox3.jpg'%}">
+                {% comment %} Mystery box details. {% endcomment %}
+                <div class="MBText">
+                    {% comment %} Upper row. {% endcomment %}
+                    <div class="row1">
+                        <p class="left">{{legendary_box_label}}</p>
+                        {% comment %} Price in SOL. {% endcomment %}
+                        <p class="right">{{p3}} SOL</p>
+                    </div>
+                    {% comment %} Lower row. {% endcomment %}
+                    <div class="row2">
+                        <p class="left">Be a Trillionaire!</p>
+                        {% comment %} Price in $. {% endcomment %}
+                        <p class="right">${{Dollar3}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+{%endblock content%}

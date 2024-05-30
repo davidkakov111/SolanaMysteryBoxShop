@@ -1,0 +1,145 @@
+Metadata-Version: 2.1
+Name: apischema
+Version: 0.16.6
+Summary: JSON (de)serialization, *GraphQL* and JSON schema generation using Python typing.
+Home-page: https://github.com/wyfo/apischema
+Author: Joseph Perez
+Author-email: joperez@hotmail.fr
+License: MIT
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: dataclasses (==0.7) ; python_version < "3.7"
+Provides-Extra: examples
+Requires-Dist: graphql-core (>=3.0.0) ; extra == 'examples'
+Requires-Dist: attrs ; extra == 'examples'
+Requires-Dist: docstring-parser ; extra == 'examples'
+Requires-Dist: bson ; extra == 'examples'
+Requires-Dist: orjson ; extra == 'examples'
+Requires-Dist: pydantic ; extra == 'examples'
+Requires-Dist: pytest ; extra == 'examples'
+Requires-Dist: sqlalchemy ; extra == 'examples'
+Provides-Extra: graphql
+Requires-Dist: graphql-core (>=3.0.0) ; extra == 'graphql'
+
+# apischema
+
+JSON (de)serialization, *GraphQL* and JSON schema generation using Python typing.
+
+*apischema* makes your life easier when dealing with API data.
+
+## Documentation
+
+[https://wyfo.github.io/apischema/](https://wyfo.github.io/apischema/)
+
+## Install
+```shell
+pip install apischema
+```
+It requires only Python 3.6+ (and dataclasses [official backport](https://pypi.org/project/dataclasses/) for version 3.6 only)
+
+*PyPy3* is fully supported.
+
+## Why another library?
+
+(If you wonder how this differs from the *pydantic* library, see the [dedicated section of the documentation](https://wyfo.github.io/apischema/difference_with_pydantic/) — there are many differences.)
+
+This library fulfills the following goals:
+
+- stay as close as possible to the standard library (dataclasses, typing, etc.) — as a consequence we do not need plugins for editors/linters/etc.;
+- be adaptable, provide tools to support any types (ORM, etc.);
+- avoid dynamic things like using raw strings for attributes name - play nicely with your IDE.
+
+No known alternative achieves all of this, and apischema is also [faster](https://wyfo.github.io/apischema/performance_and_benchmark) than all of them.
+
+On top of that, because APIs are not only JSON, *apischema* is also a complete *GraphQL* library.
+
+## Example
+
+```python
+from collections.abc import Collection
+from dataclasses import dataclass, field
+from uuid import UUID, uuid4
+
+from graphql import print_schema
+from pytest import raises
+
+from apischema import ValidationError, deserialize, serialize
+from apischema.graphql import graphql_schema
+from apischema.json_schema import deserialization_schema
+
+
+# Define a schema with standard dataclasses
+@dataclass
+class Resource:
+    id: UUID
+    name: str
+    tags: set[str] = field(default_factory=set)
+
+
+# Get some data
+uuid = uuid4()
+data = {"id": str(uuid), "name": "wyfo", "tags": ["some_tag"]}
+# Deserialize data
+resource = deserialize(Resource, data)
+assert resource == Resource(uuid, "wyfo", {"some_tag"})
+# Serialize objects
+assert serialize(Resource, resource) == data
+# Validate during deserialization
+with raises(ValidationError) as err:  # pytest checks exception is raised
+    deserialize(Resource, {"id": "42", "name": "wyfo"})
+assert err.value.errors == [
+    {"loc": ["id"], "msg": "badly formed hexadecimal UUID string"}
+]
+# Generate JSON Schema
+assert deserialization_schema(Resource) == {
+    "$schema": "http://json-schema.org/draft/2020-12/schema#",
+    "type": "object",
+    "properties": {
+        "id": {"type": "string", "format": "uuid"},
+        "name": {"type": "string"},
+        "tags": {"type": "array", "items": {"type": "string"}, "uniqueItems": True},
+    },
+    "required": ["id", "name"],
+    "additionalProperties": False,
+}
+
+
+# Define GraphQL operations
+def resources(tags: Collection[str] | None = None) -> Collection[Resource] | None:
+    ...
+
+
+# Generate GraphQL schema
+schema = graphql_schema(query=[resources], id_types={UUID})
+schema_str = """\
+type Query {
+  resources(tags: [String!]): [Resource!]
+}
+
+type Resource {
+  id: ID!
+  name: String!
+  tags: [String!]!
+}
+"""
+assert print_schema(schema) == schema_str
+```
+*apischema* works out of the box with your data model.
+
+[*Let's start the apischema tour.*](https://wyfo.github.io/apischema/)
+
+## Changelog
+
+See [releases](https://github.com/wyfo/apischema/releases)
+

@@ -1,0 +1,158 @@
+{%extends 'CoreMysteryBox/base.html'%}
+{%block title%}NFT Mystery Boxes{%endblock title%}
+{%block styleBODY%}
+overflow-y: hidden;
+{%endblock styleBODY%};
+{%block head%}
+{% comment %} Loading css file and static. {% endcomment %}
+{%load static%}
+<link rel="stylesheet" type="text/css" href="{% static 'NFTMysteryBox/nft_mb.css' %}">
+{%endblock head%}
+{%block content%}
+{% comment %} Mystery Boxes {% endcomment %}
+{% comment %} Div to make overflow the mystery boxes horizontally. {% endcomment %}
+<div id="outsideBox">
+    {% comment %} Inside div for the mystery boxes. {% endcomment %}
+    <div class="MBBox">
+        {% comment %} Puppy mystery box. {% endcomment %}
+        <div class="MysteryBox" id="PuppyMysteryBox">
+            {% comment %} Anchor tag to be clickable the mystery box. {% endcomment %}
+            <a href="{% url 'NFTMB_generate_qr' puppy_box_label puppy_price%}">
+                {% comment %} Puppy mystery box image {% endcomment %}
+                <img class="MBimg" src="{% static 'NFTMysteryBox/puppyMB.jpg'%}" alt="Puppy Mystery Box">
+                {% comment %} Mystery box details. {% endcomment %}
+                <div class="MBText">
+                    {% comment %} Upper row. {% endcomment %}
+                    <div class="row row1">
+                        <p class="left">{{puppy_box_label}}</p>
+                        {% comment %} Price in SOL. {% endcomment %}
+                        <p class="right">{{puppy_price}} SOL</p>
+                    </div>
+                    {% comment %} Lower row. {% endcomment %}
+                    <div class="row row2">
+                        <p class="left">Own Your Puppy</p>
+                        {% comment %} Price in $. {% endcomment %}
+                        <p class="right">${{puppy_Dollar}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% comment %} Cosmic mystery box. {% endcomment %}
+        <div class="MysteryBox" id="CosmicMysteryBox">
+            {% comment %} Anchor tag to be clickable the mystery box. {% endcomment %}
+            <a href="{% url 'NFTMB_generate_qr' cosmic_box_label cosmic_price%}">
+                {% comment %} Cosmic mystery box image {% endcomment %}
+                <img class="MBimg" src="{% static 'NFTMysteryBox/cosmicMB.jpg'%}" alt="Cosmic Mystery Box">
+                {% comment %} Mystery box details. {% endcomment %}
+                <div class="MBText">
+                    {% comment %} Upper row. {% endcomment %}
+                    <div class="row row1">
+                        <p class="left">{{cosmic_box_label}}</p>
+                        {% comment %} Price in SOL. {% endcomment %}
+                        <p class="right">{{cosmic_price}} SOL</p>
+                    </div>
+                    {% comment %} Lower row. {% endcomment %}
+                    <div class="row row2">
+                        <p class="left">Reach The Stars</p>
+                        {% comment %} Price in $. {% endcomment %}
+                        <p class="right">${{cosmic_Dollar}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% comment %} Underwater mystery box. {% endcomment %}
+        <div class="MysteryBox" id="UnderwaterMysteryBox">
+            {% comment %} Anchor tag to be clickable the mystery box. {% endcomment %}
+            <a href="{% url 'NFTMB_generate_qr' underwater_box_label underwater_price%}">
+                {% comment %} Underwater mystery box image {% endcomment %}
+                <img class="MBimg" src="{% static 'NFTMysteryBox/underwaterMB.jpg'%}" alt="Underwater Mystery Box">
+                {% comment %} Mystery box details. {% endcomment %}
+                <div class="MBText">
+                    {% comment %} Upper row. {% endcomment %}
+                    <div class="row row1">
+                        <p class="left">{{underwater_box_label}}</p>
+                        {% comment %} Price in SOL. {% endcomment %}
+                        <p class="right">{{underwater_price}} SOL</p>
+                    </div>
+                    {% comment %} Lower row. {% endcomment %}
+                    <div class="row row2">
+                        <p class="left">Dive Deeper</p>
+                        {% comment %} Price in $. {% endcomment %}
+                        <p class="right">${{underwater_Dollar}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% comment %} Fantasy mystery box. {% endcomment %}
+        <div class="MysteryBox" id="FantasyMysteryBox">
+            {% comment %} Anchor tag to be clickable the mystery box. {% endcomment %}
+            <a href="{% url 'NFTMB_generate_qr' fantasy_box_label fantasy_price%}">
+                {% comment %} Fantasy mystery box image {% endcomment %}
+                <img class="MBimg" src="{% static 'NFTMysteryBox/fantasyMB.jpg'%}" alt="Fantasy Mystery Box">
+                {% comment %} Mystery box details. {% endcomment %}
+                <div class="MBText">
+                    {% comment %} Upper row. {% endcomment %}
+                    <div class="row row1">
+                        <p class="left">{{fantasy_box_label}}</p>
+                        {% comment %} Price in SOL. {% endcomment %}
+                        <p class="right">{{fantasy_price}} SOL</p>
+                    </div>
+                    {% comment %} Lower row. {% endcomment %}
+                    <div class="row row2">
+                        <p class="left">Unbox The Fantasy</p>
+                        {% comment %} Price in $. {% endcomment %}
+                        <p class="right">${{fantasy_Dollar}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% comment %} Ancient mystery box. {% endcomment %}
+        <div class="MysteryBox" id="AncientMysteryBox">
+            {% comment %} Anchor tag to be clickable the mystery box. {% endcomment %}
+            <a href="{% url 'NFTMB_generate_qr' ancient_box_label ancient_price%}">
+                {% comment %} Ancient mystery box image {% endcomment %}
+                <img class="MBimg" src="{% static 'NFTMysteryBox/ancientMB.jpg'%}" alt="Ancient Mystery Box">
+                {% comment %} Mystery box details. {% endcomment %}
+                <div class="MBText">
+                    {% comment %} Upper row. {% endcomment %}
+                    <div class="row row1">
+                        <p class="left">{{ancient_box_label}}</p>
+                        {% comment %} Price in SOL. {% endcomment %}
+                        <p class="right">{{ancient_price}} SOL</p>
+                    </div>
+                    {% comment %} Lower row. {% endcomment %}
+                    <div class="row row2">
+                        <p class="left">Collect The Extinct</p>
+                        {% comment %} Price in $. {% endcomment %}
+                        <p class="right">${{ancient_Dollar}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% comment %} Botanical mystery box. {% endcomment %}
+        <div class="MysteryBox" id="BotanicalMysteryBox">
+            {% comment %} Anchor tag to be clickable the mystery box. {% endcomment %}
+            <a href="{% url 'NFTMB_generate_qr' botanical_box_label botanical_price%}">
+                {% comment %} Botanical mystery box image {% endcomment %}
+                <img class="MBimg" src="{% static 'NFTMysteryBox/botanicalMB.jpg'%}" alt="Botanical Mystery Box">
+                {% comment %} Mystery box details. {% endcomment %}
+                <div class="MBText">
+                    {% comment %} Upper row. {% endcomment %}
+                    <div class="row row1">
+                        <p class="left">{{botanical_box_label}}</p>
+                        {% comment %} Price in SOL. {% endcomment %}
+                        <p class="right">{{botanical_price}} SOL</p>
+                    </div>
+                    {% comment %} Lower row. {% endcomment %}
+                    <div class="row row2">
+                        <p class="left">Discover The Nature</p>
+                        {% comment %} Price in $. {% endcomment %}
+                        <p class="right">${{botanical_Dollar}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+{%endblock content%}
+ 
