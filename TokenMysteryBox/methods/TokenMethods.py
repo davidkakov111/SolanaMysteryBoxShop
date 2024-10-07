@@ -29,15 +29,15 @@ def TokenMinter(tokacc, txamount, p2, p3):
         txamount = float(txamount)
         # Mint the appropriate amount of tokens to the token account.
         if p2 > txamount:
-            token_reward_amount = random.randint(1, 1e6)
+            token_reward_amount = random.randint(1, int(1e6))
             RPCResponse = Token.mint_to(self=token_mint, dest=PublicKey(tokacc), mint_authority=owner_account, 
                 amount=token_reward_amount)
         elif p3 > txamount:
-            token_reward_amount = random.randint(1e6, 1e9)
+            token_reward_amount = random.randint(int(1e6), int(1e9))
             RPCResponse = Token.mint_to(self=token_mint, dest=PublicKey(tokacc), mint_authority=owner_account, 
                 amount=token_reward_amount)
         else:
-            token_reward_amount = random.randint(1e9, 1e12)
+            token_reward_amount = random.randint(int(1e9), int(1e12))
             RPCResponse = Token.mint_to(self=token_mint, dest=PublicKey(tokacc), mint_authority=owner_account, 
                 amount=token_reward_amount)
         return RPCResponse, token_reward_amount

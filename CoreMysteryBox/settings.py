@@ -150,7 +150,7 @@ SolanaMB_Privatekey = base64.b64decode(os.getenv('mainnet_solanaMB_privatekey_ba
 NFTMB_Privatekey = base64.b64decode(os.getenv('mainnet_NFTMB_privatekey_base64'))
 """
 # For devnet:
-SOLANA_API_URL = "https://api.devnet.solana.com" # "https://rpc.ankr.com/solana_devnet"
+SOLANA_API_URL = "https://rpc.ankr.com/solana_devnet" # "https://api.devnet.solana.com" 
 TokenMint = '6rUfdRzZv56wvE57M8QDadBQR7ozrSVhy1yWVueTHm7D'
 TokenMB_Privatekey = base64.b64decode(os.getenv('devnet_tokenMB_privatekey_base64'))
 SolanaMB_Privatekey = base64.b64decode(os.getenv('devnet_solanaMB_privatekey_base64'))
@@ -158,7 +158,7 @@ NFTMB_Privatekey = base64.b64decode(os.getenv('devnet_NFTMB_privatekey_base64'))
 
 # If I run tests, then I use devnet settings
 if 'test' in sys.argv:
-    SOLANA_API_URL = "https://api.devnet.solana.com" # "https://rpc.ankr.com/solana_devnet"
+    SOLANA_API_URL = "https://rpc.ankr.com/solana_devnet" # "https://api.devnet.solana.com" 
     TokenMint = '6rUfdRzZv56wvE57M8QDadBQR7ozrSVhy1yWVueTHm7D'
     TokenMB_Privatekey = base64.b64decode(os.getenv('devnet_tokenMB_privatekey_base64'))
     SolanaMB_Privatekey = base64.b64decode(os.getenv('devnet_solanaMB_privatekey_base64'))
